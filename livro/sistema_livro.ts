@@ -1,12 +1,10 @@
-//classe chamada livro para 
-
 class Livro {
     //atributos
-    private titulo: string;
-    private autor: string;
-    private anoPublicacao: number;
-    private genero: string;
-    private disponivel: boolean;
+    private _titulo: string;
+    private _autor: string;
+    private _anoPublicacao: number;
+    private _genero: string;
+    private _disponivel: boolean;
 
     constructor(
         titulo: string,
@@ -15,24 +13,27 @@ class Livro {
         genero: string,
         disponivel: boolean
     ) {
-        this.titulo = titulo,
-        this.autor = autor,
-        this.anoPublicacao = anoPublicacao,
-        this.genero = genero,
-        this.disponivel = disponivel
+        this._titulo = titulo,
+        this._autor = autor,
+        this._anoPublicacao = anoPublicacao,
+        this._genero = genero,
+        this._disponivel = disponivel;
     }
 
     //métodos
     exibirInformacoes(): void {
-        console.log(`Livro:\n Título: ${this.titulo},\n Autor: ${this.autor},\n Ano de publicação: ${this.anoPublicacao},\n Gênero: ${this.genero},\n Disponível: ${this.disponivel}\n`)
+        console.log(`Livro:\n Título: ${this._titulo},\n Autor: ${this._autor},\n Ano de publicação: ${this._anoPublicacao},\n Gênero: ${this._genero},\n Disponível: ${this._disponivel ? 'sim' : 'não'}\n`)
     }
 
     emprestarLivro(): void {
-        this.disponivel = false;
+        if (this._disponivel) 
+            this._disponivel = false;
+        else 
+            console.log('Livro indisponível');
     }
 
     devolverLivro(): void {
-        this.disponivel = true; 
+        this._disponivel = true; 
     }
 
 }
@@ -61,3 +62,4 @@ const livro2 = new Livro(
 
 livro2.emprestarLivro();
 livro2.exibirInformacoes();
+livro2.emprestarLivro();
